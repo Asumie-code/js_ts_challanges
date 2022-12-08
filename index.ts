@@ -3,7 +3,7 @@
 
 // function to generate random number
 
-function random(min: number, max:number) {
+function random(min: number, max: number) {
 
         let num = Math.floor(Math.random() * (max - min)) + min;
         return num;
@@ -43,8 +43,8 @@ function longWord(str: string) {
 //#region  Revers String
 
 
-function reverString(str) {
-        let revStr = [];
+function reverString(str: string) {
+        let revStr: string[] = [];
         let i = str.length - 1;
         for (let value of str) {
                 revStr[i] = value;
@@ -58,16 +58,18 @@ function reverString(str) {
 
 //#region  Change Letters
 
-function letterChange(str) {
+function letterChange(str: string): string {
 
-        let regex = /[a-zA-Z]+/g;
-        let shiftStr = [];
+        let regex: RegExp = /[a-zA-Z]+/g;
+        let shiftStr: string[] = [];
 
-        let i = 0;
+        let i: number = 0;
         for (let value of str) {
                 if (value.match(regex)) {
 
-                        shiftStr[i] = String.fromCodePoint(value.codePointAt(0) + 1);
+
+                        shiftStr[i] = String.fromCodePoint(value.codePointAt(0) ?? 0 + 1);
+
                 } else {
                         shiftStr[i] = value;
                 }
@@ -89,7 +91,7 @@ function letterChange(str) {
 
 //#region  Simple Adding
 
-function SimpleAdding(num) {
+function SimpleAdding(num: number): number {
 
 
         if (num === 1) {
@@ -113,9 +115,9 @@ function SimpleAdding(num) {
 
 //#region Letter Capitalize
 
-function letterCapitalize(str) {
-        let regex = /\b[a-zA-Z]/g;
-        let arrStr = str.split(' ');
+function letterCapitalize(str: string): string {
+        let regex: RegExp = /\b[a-zA-Z]/g;
+        let arrStr: string[] = str.split(' ');
 
 
         for (let value in arrStr) {
@@ -131,16 +133,16 @@ function letterCapitalize(str) {
 
 //#region Simple Symbols 
 
-function simpleSymbols(str) {
+function simpleSymbols(str: string): boolean {
 
-        let regex = /([\+]+[a-zA-Z]+[\+]+|[\=]+[a-zA-Z]+[\=]+)+/g;
-        let regex2 = /[\+]+[a-zA-Z]+[\=]+/g;
+        let regex: RegExp = /([\+]+[a-zA-Z]+[\+]+|[\=]+[a-zA-Z]+[\=]+)+/g;
+        let regex2: RegExp = /[\+]+[a-zA-Z]+[\=]+/g;
 
         if (((str.endsWith('+') || str.endsWith('=')) || /\d/g.test(str[str.length - 1])) && ((str.startsWith('+') || str.startsWith('=')) || /\d/g.test(str[0]))) {
                 if (regex2.test(str)) {
                         return false;
                 } else {
-                        let bool = ((regex.test(str)) ? true : false);
+                        let bool: boolean = ((regex.test(str)) ? true : false);
                         return bool;
                 }
 
@@ -157,7 +159,7 @@ function simpleSymbols(str) {
 
 //#region Time Convert
 
-function TimeConvert(num) {
+function TimeConvert(num: number): string {
         if (num / 60 > 1) {
                 return `${Math.trunc(num / 60)}:${num % 60}`;
         } else if (num / 60 === 1) {
@@ -173,7 +175,7 @@ function TimeConvert(num) {
 //#region Sort Letters
 
 
-function SortLetters(str) {
+function SortLetters(str: string): string {
         let arr = str.split('');
         arr.sort();
         return arr.join('');
@@ -184,17 +186,17 @@ function SortLetters(str) {
 
 //#region Kaprekars Constant
 
-function KaprekarsConstant(num) {
+function KaprekarsConstant(num: number): number {
 
-        let counter = 0;
+        let counter: number = 0;
         while (num !== 6174) {
                 let numAscending = num.toString().split('').sort();
                 let numDescending = num.toString().split('').sort().reverse();
-                num = (parseInt(numDescending.join('')) - parseInt(numAscending.join(''))).toString().split('');
-                if (num.length === 3) {
-                        num.push('0');
+                let arr: string[] = (parseInt(numDescending.join('')) - parseInt(numAscending.join(''))).toString().split('');
+                if (arr.length === 3) {
+                        arr.push('0');
                 }
-                num = parseInt(num.join(''));
+                num = parseInt(arr.join(''));
                 counter++;
         }
 
@@ -206,11 +208,11 @@ function KaprekarsConstant(num) {
 
 //#region  Chess Travling 
 
-function ChessTraveling(str) {
+function ChessTraveling(str: string): number {
 
-        let values = str.split('').filter(number => (!(isNaN(number)) && number !== ' '));
-        let verticalDiff = parseInt(values[3]) - parseInt(values[1]);
-        let horzintalDiff = parseInt(values[2]) - parseInt(values[0]);
+        let values: string[] = str.split('').filter(number => (!(isNaN(Number(number))) && number !== ' '));
+        let verticalDiff: number = parseInt(values[3]) - parseInt(values[1]);
+        let horzintalDiff: number = parseInt(values[2]) - parseInt(values[0]);
 
         return factorial(verticalDiff + horzintalDiff) / (factorial(verticalDiff) * factorial(horzintalDiff));
 
@@ -219,73 +221,10 @@ function ChessTraveling(str) {
 //#endregion
 
 
-//#region  maximal square not my solution
-
-function formatArr(arr) {
-        let formatedArr = [];
-        for (let value of arr) {
-                let tempArr = [];
-                for (let num of value) {
-                        tempArr.push(parseInt(num));
-                }
-                formatedArr.push(tempArr);
-        }
-
-        return formatedArr;
-}
 
 
-
-function MaximalSquare(mtx) {
-        let x = mtx.length;
-        if (x === 0) return 0;
-        let y = mtx[0].length;
-        if (y === 0) return 0;
-        let max = 0;
-        let sizes = [];
-        for (let i in mtx) {
-                sizes[i] = [];
-        }
-
-
-        for (let i in mtx) {
-                for (let j in mtx[i]) {
-                        if (i == 0 || j == 0) {
-                                sizes[i][j] = mtx[i][j];
-                        } else if (mtx[i][j] === 1) {
-                                sizes[i][j] = Math.min(Math.min(sizes[i][parseInt(j) - 1], sizes[parseInt(i) - 1][j]), sizes[parseInt(i) - 1][parseInt(j) - 1]) + 1;
-                        } else if (mtx[i][j] === 0) {
-                                sizes[i][j] = mtx[i][j];
-                        }
-                        if (sizes[i][j] > max) max = sizes[i][j];
-                }
-        }
-
-        return max * max;
-}
-
-//#endregion
-
-
-
-// let arr3 =  ["101101", "111111", "011111", "111111", "001111", "011111"]; // 16
-// let arr2  =  ["101101", "111111", "010111", "111111"] // 9
-// let arr = ["01001", "11111", "01011", "11011"]; // 4
-
-
-
-
-
-
-// // console.log(formatArr(arr3));
-// console.log(MaximalSquare(formatArr(arr3)));
-// console.log(MaximalSquare(formatArr(arr2)));
-// console.log(MaximalSquare(formatArr(arr)));
-
-
-
-function swap(arr, index) {
-        let a, b;
+function swap<Type>(arr: Type[], index: number) {
+        let a: Type, b: Type;
         if (index === arr.length - 1) {
                 return 0;
         }
@@ -298,8 +237,8 @@ function swap(arr, index) {
 
 
 
-function randomPermu(arr, times) {
-        let permu = [];
+function randomPermu(arr: number[], times: number) {
+        let permu: number[] = [];
         for (let value of arr) {
                 permu.push(value);
         }
@@ -318,234 +257,28 @@ function randomPermu(arr, times) {
 
 // console.log(randomPermu(arr, 15));
 
-function PentagonalNumber(num) {
-        let number = 1;
-        for (let i = 0; i < num; i++) {
-                number += 5 * i;
-        }
-
-        return number;
-}
 
 
-function alternative(num) {
+function alternative(num: number): number {
         if (num === 0) {
                 return 0;
         }
-
         return 1 + (alternative(num - 1) - 1);
 }
 
-function PentagonalNumber(num) {
+function PentagonalNumber(num: number): number {
         return num === 1 ? 1 : PentagonalNumber(num - 1) + (5 * (num - 1));
 }
 
 
-
-
-// need to count for str length and numbers of extra ds and rs
-
-function correctPath(str) {
-        const dir = [];
-        let Dcount = 0;
-        let Rcount = 0;
-        let Qcount = 0;
-        let totalMovementD = 4;
-        let totalMovementR = 4;
-        let remainingD = 0;
-        let remainingR = 0;
-        for (const direction of str.toLowerCase()) {
-                dir.push(direction);
-
-        }
-
-        for (const value of dir) {
-                if (value === 'd') {
-                        Dcount++;
-                } else if (value === 'r') {
-                        Rcount++;
-                } else if (value === '?') {
-                        Qcount++;
-                } else if (value === 'u') {
-                        totalMovementD++;
-                } else if (value === 'l') {
-                        totalMovementR++;
-                }
-        }
-
-
-        remainingD = totalMovementD - Dcount;
-        remainingR = totalMovementR - Rcount;
-        console.log(Dcount);
-        console.log(Rcount);
-        console.log(remainingD);
-        console.log(remainingR);
-
-        // try to adjust this by cheking for remaining < 0
-        for (let index in dir) {
-                if (dir[index] === '?') {
-                        if (remainingD > 0) {
-                                dir[index] = 'd';
-                                remainingD--;
-                                Qcount--;
-                        } else if (remainingD < 0) {
-                                dir[index] = 'u'
-                                remainingD++;
-                                Qcount--;
-                        } else if (remainingR > 0) {
-                                dir[index] = 'r';
-                                remainingR--;
-                                Qcount--;
-                        } else if (remainingR < 0) {
-                                dir[index] = 'l';
-                                remainingR++;
-                                Qcount--;
-                        } else {
-
-                        }
-                }
-        }
-
-        console.log(remainingD);
-        console.log(remainingR);
-
-        return dir.join('');
-
-
-}
-
-
-
-
-function CorrectPath(str) {
-        //create an array to hold the positions of the question marks
-        let blankArray = [];
-        //put the position of the question marks into the array
-        str.split('').forEach((val, ind) => {
-                if (val === '?') {
-                        blankArray.push(ind);
-                }
-        });
-
-        let num = blankArray.length;
-
-        //we are going to try each possibility until we find one that works,  This will be 4^num permutations
-        let total = Math.pow(4, num);
-
-        for (let i = 0; i < total; i++) {
-                //go through each permutation, first creating a representative number, then making the path, then testing it
-                let numString = (i + total).toString(4).slice(1);
-                let currentPath = createPath(str, blankArray, numString);
-                if (isPathGood(currentPath)) {
-                        return currentPath;
-                }
-        }
-}
-
-
-
-
-//     isPathGood = (str) => {
-//             //create our empty array
-//             let testArray = []
-//             for (let i = 0; i < 5; i++) {
-//                     testArray.push([0, 0, 0, 0, 0])
-//             }
-
-//             let len = str.length;
-//             let currentLoc = [0, 0];
-
-//             for (let i = 0; i < len; i++) {
-//                 //mark our current square as visited
-//                     testArray[currentLoc[0]][currentLoc[1]] = 1;
-//                     //alter the position based on the next letter
-//                     let newLoc = currentLoc.slice(0);
-//                     switch (str[i]) {
-//                             case 'u':
-//                                     newLoc[0]--;
-//                                     break;
-//                             case 'd':
-//                                     newLoc[0]++;
-//                                     break;
-//                             case 'r':
-//                                     newLoc[1]++;
-//                                     break;
-//                             case 'l':
-//                                     newLoc[1]--;
-//                                     break;
-//                     }
-//                     //quit if we have gone off the board
-//                     if (newLoc.includes (-1) || newLoc.includes (5)) {
-//                                     return false;
-//                     }
-//                     //quit if we are on a previously visited space
-//                     if (testArray[newLoc[0]][newLoc[1]] === 1) {
-//                             return false;
-//                     }
-//                     //return true if we are at the target square on our last go
-//                     if (newLoc[0] === 4 && newLoc[1] === 4 && i === len - 1) {
-//                             return true;
-//                     }
-//                     //update our location for the next loop;
-//                     currentLoc = newLoc;
-//             }
-//             return false;
-//     };
-
-//     createPath = (str, blanks, num) => {
-//             let moveArray = ['r', 'l', 'u', 'd'];
-//             strArr = str.split('');
-//             blanks.forEach((val, ind) => {
-//                     strArr.splice(val, 1, moveArray[num[ind]]);
-//             });
-//             return strArr.join('');
-//     };
-
-
-// console.log(correctPath("drdr??rrddd?"));
-
-
-// console.count(5);
-// console.warn('warning');
-
-// console.time() and console.timeEnd() method  
-// console.time('abc'); 
-let fun = function () {
-        console.log('fun is running');
-}
-let fun2 = function () {
-        console.log('fun2 is running..');
-}
-//  fun(); // calling fun(); 
-//  fun2(); // calling fun2(); 
-// console.timeEnd('abc'); 
-
-// console.table() method 
-// console.table({'a':1, 'b':2}); 
-
-// console.count() method 
-// for(let i=0;i<5;i++){ 
-// 	console.count(i); 
-// } 
-
-
-// console.group() and console.groupEnd() method 
-// console.group('simple'); 
-// console.warn('warning!'); 
-// console.error('error here'); 
-// console.log('vivi vini vici'); 
-// console.groupEnd('simple'); 
-// console.log('new section'); 
-
-
 let str = 'acc?7??sss?3rr1??????5';
 
-function QuestionsMarks(str) {
-        let numIndices = [];
-        let strSlices = [];
-        let count = 0;
-        let threeQs = false;
-        for (let i = 0; i < str.length; i++) {
+function QuestionsMarks(str: string): boolean {
+        let numIndices: number[] = [];
+        let strSlices: string[] = [];
+        let count: number = 0;
+        let threeQs: boolean = false;
+        for (let i: number = 0; i < str.length; i++) {
                 if (str[i].match(/[0-9]/g)) numIndices.push(i);
         }
 
@@ -584,20 +317,20 @@ function QuestionsMarks(str) {
 
 let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 
-function intersection(str) {
-        let strF = [];
+function intersection(str: string[]): number[] | boolean {
+        let strF: string[][] = [];
         for (let i in str) {
                 strF[i] = str[i].split(', ');
         }
-        let numArrs = [];
+        let numArrs: number[][] = [];
         for (let i in strF) {
-                numArrs[i] = new Array();
+                numArrs[i] = new Array<number>();
                 for (let value of strF[i]) {
                         numArrs[i].push(parseInt(value));
                 }
         }
 
-        let intersection = [];
+        let intersection: number[] = [];
         for (let value1 of numArrs[0]) {
                 for (let value2 of numArrs[1]) {
                         if (value1 === value2) {
@@ -617,8 +350,8 @@ function intersection(str) {
 
 //#region   bracket combinations
 
-function bracketCombinations(num) {
-        let result = 0;
+function bracketCombinations(num: number): number {
+        let result: number = 0;
         if (typeof num === 'number') {
 
                 result = (factorial(num * 2) / (factorial(num) * factorial((num + 1))));
@@ -637,37 +370,13 @@ function bracketCombinations(num) {
 
 
 
-//#region  minwindowsubstring 
-
-
-// function MinWindowSubstring(strArr) { 
-//         const [firstString, secondString] = strArr; 
-//         let smallMatch = ''; 
-//         const test = new Set(secondString); 
-//         const placeholder = []; 
-//         for(let index = 0; index < firstString.length; index++) {
-//                 for(let value of test) {
-//                         if(value === firstString[index]) placeholder.push({[index]:  value}); 
-
-//                 }
-//         }
+//#region  minwindowsubstring not my solution 
 
 
 
-
-//         return placeholder; 
-
-//       }
-
-
-
-
-
-
-
-function MinWindowSubstring(strArr) {
-        let str = strArr[0];
-        let needle = strArr[1].split('');
+function MinWindowSubstring(strArr: string[]): string |  boolean {
+        let str: string = strArr[0];
+        let needle: string[] = strArr[1].split('');
 
 
         //start with the smallest possible substrings, then go up
@@ -1192,23 +901,23 @@ console.log(isValid("(){}}{"))
 function fmsa(nums1, nums2) {
 
         function sortNumber(a, b) {
-                return a - b; 
+                return a - b;
         }
         let arr = nums1.concat(nums2).sort(sortNumber);
-        console.log(arr); 
-        let median = 0;  
-        if(arr.length % 2 === 0) {
-               median = (arr[(arr.length / 2) - 1] + arr[arr.length / 2]) / 2 ;
+        console.log(arr);
+        let median = 0;
+        if (arr.length % 2 === 0) {
+                median = (arr[(arr.length / 2) - 1] + arr[arr.length / 2]) / 2;
         } else {
-                median = arr[(arr.length - 1) / 2 ]
+                median = arr[(arr.length - 1) / 2]
         }
-    
-        return median 
-    }
-    
-    console.log(fmsa([1,3], [2]))
-    console.log(fmsa([1,2], [3,4]))
-    console.log(fmsa([-2, -1], [3]))
+
+        return median
+}
+
+console.log(fmsa([1, 3], [2]))
+console.log(fmsa([1, 2], [3, 4]))
+console.log(fmsa([-2, -1], [3]))
 
 
 //#endregion
