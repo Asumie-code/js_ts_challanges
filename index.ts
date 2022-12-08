@@ -3,7 +3,7 @@
 
 // function to generate random number
 
-function random(min, max) {
+function random(min: number, max:number) {
 
         let num = Math.floor(Math.random() * (max - min)) + min;
         return num;
@@ -20,12 +20,12 @@ function factorial(x) {
 
 //#region Long word
 
-function longWord(str) {
+function longWord(str: string) {
 
         let regex = /[^\w\s]/g;
-        let words = str.split(regex).join('').split(' ');
+        let words: string[] = str.split(regex).join('').split(' ');
 
-        let wordSize = [];
+        let wordSize: number[] = [];
         for (let value of words) {
                 wordSize.push(value.length);
         }
