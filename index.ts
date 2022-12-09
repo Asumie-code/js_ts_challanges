@@ -392,8 +392,8 @@ function MinWindowSubstring(strArr: string[]): string |  boolean {
 
         // ---------------------- helpers -----------------------------
         //isContained checks to see if all the chars in the needle are in the given string
-        function isContained(str) {
-                let arr = str.split('');
+        function isContained(str: string): boolean {
+                let arr: string[] = str.split('');
                 for (let i = 0, len = needle.length; i < len; i++) {
                         let place = arr.findIndex(val => {
                                 return val === needle[i]
@@ -418,14 +418,14 @@ function MinWindowSubstring(strArr: string[]): string |  boolean {
 
 //#region  treeConstructor 
 
-function TreeConstructor(strArr) {
-        let formatedArr = [];
-        let maxParentCount = 0;
+function TreeConstructor(strArr: string[]): boolean {
+        let formatedArr: number[] = [];
+        let maxParentCount: number = 0;
         for (let value of strArr) {
                 formatedArr.push(parseInt(value[3]));
         }
-        // code goes here  
-        const parentCount = {};
+
+        const parentCount: {[key: number]: number } = {};
         formatedArr.forEach((x) => {
                 parentCount[x] = (parentCount[x] || 0) + 1;
         })
@@ -459,50 +459,8 @@ function TreeConstructor(strArr) {
 
 
 
-
-
-function BracketMatcher(str) {
-
-        let bracketArr = [];
-        let leftBracketCount = 0;
-        let rightBracketCount = 0;
-        for (let value of str.split('')) {
-                if (value === ')' || value === '(') {
-                        bracketArr.push(value);
-                }
-        }
-
-        console.log(bracketArr)
-
-        for (let value of bracketArr) {
-                if (value === ')') {
-                        rightBracketCount++;
-                } else {
-                        leftBracketCount++;
-                }
-        }
-
-        if (rightBracketCount === leftBracketCount) {
-
-                return 1
-        } else {
-
-                return 0
-        }
-
-
-
-
-}
-
-
-
-
-// someone's else solution 
-
-function bracketMatcher(str) {
+function bracketMatcher(str: string): number {
         let open = 0;
-
         for (let i = 0; i < str.length; i++) {
                 if (str[i] === '(') open++;
                 if (str[i] === ')') open--;
@@ -525,11 +483,11 @@ function bracketMatcher(str) {
 
 //#region codelandUsernamevalidation
 
-function CodelandUsernameValidation(str) {
-        let letters_numbers_underscores = /^[A-Za-z0-9_]+$/g;
-        let letters = /[A-Za-z]/g;
-        // code goes here  
-        const [matched] = str.match(letters_numbers_underscores);
+function CodelandUsernameValidation(str: string): boolean {
+        let letters_numbers_underscores: RegExp = /^[A-Za-z0-9_]+$/g;
+        let letters: RegExp = /[A-Za-z]/g;
+        // analays this type
+        const [matched] = str.match(letters_numbers_underscores) ?? [null];
 
         if (matched && !matched.endsWith('_') && letters.test(matched[0]) && matched.length > 3 && matched.length < 26) {
                 return true
@@ -550,8 +508,9 @@ function CodelandUsernameValidation(str) {
 
 //#region addtwonumbers  linkedlists
 
+// rework this code 
 
-function ListNode(val, next) {
+function ListNode(val?, next?) {
         this.val = (val === undefined ? 0 : val)
         this.next = (next === undefined ? null : next)
 }
@@ -586,8 +545,9 @@ function arrayToList(arr) {
 
 
 function addTwoNumbers(l1, l2) {
-        let arr1 = [];
-        let arr2 = [];
+        // rework this type
+        let arr1: any = [];
+        let arr2: any = [];
         let head1 = l1;
         let head2 = l2;
         while (head1 !== null) {
@@ -606,7 +566,7 @@ function addTwoNumbers(l1, l2) {
 
         const str1 = arr1.join('');
         const str2 = arr2.join('');
-        let sum = 0;
+        let sum: BigInt | number;
         if (Number.isSafeInteger(parseInt(str1) && Number.isSafeInteger(parseInt(str2)))) {
                 sum = parseInt(str1) + parseInt(str2);
         } else {
@@ -637,8 +597,8 @@ function addTwoNumbers(l1, l2) {
 
 //#region  maxSlidingwindow
 
-function maxSlidingwindow(nums, k) {
-        let maxArr = [];
+function maxSlidingwindow(nums: number[], k: number): number[] {
+        let maxArr: number[] = [];
         for (let index in nums) {
 
                 if (parseInt(index) < (nums.length + 1) - k) {
@@ -662,7 +622,7 @@ function maxSlidingwindow(nums, k) {
 
 //#region  two sum 
 
-function twoSum(nums, target) {
+function twoSum(nums: number[], target: number): number[] | undefined {
         for (let i = 0; i < nums.length; i++) {
                 for (let j = i + 1; j < nums.length; j++) {
                         if (nums[i] + nums[j] === target) {
@@ -684,10 +644,10 @@ function twoSum(nums, target) {
 
 //#region lengthOfLongestSubstring 
 
-function lengthOfLongestSubstring(s) {
-        let ans = 0;
+function lengthOfLongestSubstring(s: string) {
+        let ans: number = 0;
         let map = {};
-        let i = 0;
+        let i: number = 0;
 
         for (let j = 0; j < s.length; j++) {
 
@@ -710,40 +670,17 @@ function lengthOfLongestSubstring(s) {
 
 
 
-//#region find median sorted array
 
-function fmsa(nums1, nums2) {
-
-        function sortNumber(a, b) {
-                return a - b;
-        }
-        let arr = nums1.concat(nums2).sort(sortNumber);
-        console.log(arr);
-        let median = 0;
-        if (arr.length % 2 === 0) {
-                median = (arr[(arr.length / 2) - 1] + arr[arr.length / 2]) / 2;
-        } else {
-                median = arr[(arr.length - 1) / 2]
-        }
-
-        return median
-}
-
-console.log(fmsa([1, 3], [2]))
-console.log(fmsa([1, 2], [3, 4]))
-console.log(fmsa([-2, -1], [3]))
-
-//#endregion
 
 
 //#region  reverse integer 
 
-function reverseInt(x) {
-        let number = (x < 0) ? -1 * x : x;
-        let lastDigit = 0;
-        let reverse = 0;
-        const minIntegerNumber = Math.pow(-2, 31);
-        const maxIntegerNumber = Math.pow(2, 31) - 1;
+function reverseInt(x: number): number {
+        let number: number = (x < 0) ? -1 * x : x;
+        let lastDigit: number = 0;
+        let reverse: number = 0;
+        const minIntegerNumber: number = Math.pow(-2, 31);
+        const maxIntegerNumber: number = Math.pow(2, 31) - 1;
 
         while (number > 0) {
                 lastDigit = number % 10;
@@ -769,21 +706,20 @@ console.log(reverseInt(-123))
 
 //#region zigzag
 
-function zigzag(s, numRows) {
+function zigzag(s: string, numRows: number): string {
         if (numRows == 1) return s;
         const length = Math.min(numRows, s.length)
-        let rows = [];
-        let curRow = 0;
-        let goingDown = false;
+        let rows: string[] = [];
+        let curRow: number = 0;
+        let goingDown: boolean = false;
         for (let i = 0; i < length; i++) {
                 rows.push('')
         }
-        for (let index in s) {
+        for (let index in s.split('')) {
                 rows[curRow] += s[index]
                 if (curRow === 0 || curRow === numRows - 1) goingDown = !goingDown
                 curRow += goingDown ? 1 : -1;
         }
-        console.log(rows)
         let ret = '';
         for (let value of rows) {
                 ret += value
@@ -805,10 +741,10 @@ console.log(zigzag("PAYPALISHIRING", 3))
 
 //#region  myatoi 
 
-function myAtoi(s) {
-        let int32signed = Math.pow(2, 31) * -1;
-        let int32unsigned = Math.pow(2, 31) - 1
-        let num = parseInt(s)
+function myAtoi(s: string): number {
+        let int32signed: number = Math.pow(2, 31) * -1;
+        let int32unsigned: number = Math.pow(2, 31) - 1
+        let num: number = parseInt(s)
         if (isNaN(num)) {
                 return 0
         } else {
@@ -839,10 +775,10 @@ function myAtoi(s) {
 
 //#region  maxArea 
 
-function maxArea(height) {
-        let maxarea = 0
-        let left = 0
-        let right = height.length - 1
+function maxArea(height: number[]): number {
+        let maxarea: number = 0
+        let left: number = 0
+        let right: number = height.length - 1
 
         while (left < right) {
                 let width = right - left
@@ -861,14 +797,14 @@ console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
 
 //#region valid brackeets 
 
-let isValid = function (s) {
+let isValid = function (s: string): boolean {
         if (s.length % 2 !== 0 || '})]'.includes(s[0]) || '({['.includes(s[s.length - 1])) return false
         let map = {
                 ")": "(",
                 "]": "[",
                 "}": "{"
         };
-        let arr = [];
+        let arr: string[] = [];
 
         for (let i = 0; i < s.length; i++) {
 
@@ -898,14 +834,13 @@ console.log(isValid("(){}}{"))
 
 //#region median of two sorted arrays
 
-function fmsa(nums1, nums2) {
+function fmsa(nums1: number[], nums2: number[]): number {
 
-        function sortNumber(a, b) {
+        function sortNumber(a: number, b: number): number {
                 return a - b;
         }
-        let arr = nums1.concat(nums2).sort(sortNumber);
-        console.log(arr);
-        let median = 0;
+        let arr: number[] = nums1.concat(nums2).sort(sortNumber);
+        let median: number = 0;
         if (arr.length % 2 === 0) {
                 median = (arr[(arr.length / 2) - 1] + arr[arr.length / 2]) / 2;
         } else {
