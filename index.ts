@@ -1,21 +1,8 @@
-"use strict";
+import { random, factorial } from "./utils";
+import { ListNode, insert, arrayToList } from "./linkedList";
 
 
-// function to generate random number
 
-function random(min: number, max: number) {
-
-        let num = Math.floor(Math.random() * (max - min)) + min;
-        return num;
-}
-
-//#region  Factorial
-
-function factorial(x) {
-        return (x === 0) ? 1 : x * factorial(x - 1);
-}
-
-//#endregion
 
 
 //#region Long word
@@ -508,40 +495,6 @@ function CodelandUsernameValidation(str: string): boolean {
 
 //#region addtwonumbers  linkedlists
 
-// rework this code 
-
-function ListNode(val?, next?) {
-        this.val = (val === undefined ? 0 : val)
-        this.next = (next === undefined ? null : next)
-}
-
-
-function insert(root, item) {
-        let temp = new ListNode();
-        let ptr;
-        temp.val = item;
-        temp.next = null;
-
-        if (root === null) {
-                root = temp;
-        } else {
-                ptr = root;
-                while (ptr.next != null) {
-                        ptr = ptr.next;
-
-                }
-                ptr.next = temp;
-        }
-        return root;
-}
-
-
-function arrayToList(arr) {
-        let root = null;
-        for (let i = 0; i < arr.length; i++)
-                root = insert(root, parseInt(arr[i]));
-        return root;
-}
 
 
 function addTwoNumbers(l1, l2) {
