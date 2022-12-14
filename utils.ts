@@ -8,6 +8,6 @@ export function random(min: number, max: number) {
 
 
 
-export function factorial(x) {
+export function factorial(x: number): number {
     return (x === 0) ? 1 : x * factorial(x - 1);
 }
