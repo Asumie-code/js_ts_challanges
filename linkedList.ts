@@ -35,7 +35,7 @@ export function arrayToList(arr) {
 
 
 
-class Node<T> {
+export class Node<T> {
         value: T
         next: Node<T> | null 
         prev: Node<T> | null 
