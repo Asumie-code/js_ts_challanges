@@ -41,7 +41,7 @@ export class Node<T> {
         }
 }
 
-class LinkedList<T> {
+export class LinkedList<T> {
         #head: Node<T> | null;
         #tail: Node<T> | null;
         #length: number;
@@ -111,7 +111,7 @@ class LinkedList<T> {
                         this.#head = newItem;
                 }
 
-                this.#length;
+                this.#length++;
 
                 return true;
         }
