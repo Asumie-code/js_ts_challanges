@@ -4,7 +4,8 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "productionTest": "jest"
   },
   "devDependencies": {
     "jest": "^29.3.1",
