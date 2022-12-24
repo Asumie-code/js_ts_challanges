@@ -89,3 +89,35 @@ test('remove tail from linkedList', () => {
 
 })
 
+
+
+
+test('remove node from Linkedlist', () => {
+    let list: LinkedList<number> = new LinkedList(1, 2, 3)
+
+    
+    list.remove(2)
+    expect(list.head).not.toBeNull()
+    expect(list.tail).not.toBeNull()
+    expect(list.head?.value).toEqual(1)
+    expect(list.tail?.value).toEqual(3)
+})
+
+
+test('convert linkedList to Array', () => {
+    let list: LinkedList<number> = new LinkedList(1, 2, 3)
+    let arr: number[] = list.toArray()
+    
+    
+    expect(list.head).not.toBeNull()
+    expect(list.tail).not.toBeNull()
+    expect(arr).toBeDefined()
+    expect(arr).toHaveLength(3)
+    let index: number = 0
+    for(let value of list) {
+        expect(value).toEqual(arr[index])
+        index++
+    }
+
+})
+
