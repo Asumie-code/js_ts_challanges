@@ -7,7 +7,7 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 
 //#region Long word
 
-function longWord(str: string) {
+ export function longWord(str: string) {
 
         let regex = /[^\w\s]/g;
         let words: string[] = str.split(regex).join('').split(' ');
@@ -30,7 +30,7 @@ function longWord(str: string) {
 //#region  Revers String
 
 
-function reverString(str: string) {
+ export function reverString(str: string) {
         let revStr: string[] = [];
         let i = str.length - 1;
         for (let value of str) {
@@ -45,7 +45,7 @@ function reverString(str: string) {
 
 //#region  Change Letters
 
-function letterChange(str: string): string {
+ export function letterChange(str: string): string {
 
         let regex: RegExp = /[a-zA-Z]+/g;
         let shiftStr: string[] = [];
@@ -78,7 +78,7 @@ function letterChange(str: string): string {
 
 //#region  Simple Adding
 
-function SimpleAdding(num: number): number {
+ export function SimpleAdding(num: number): number {
 
 
         if (num === 1) {
@@ -102,7 +102,7 @@ function SimpleAdding(num: number): number {
 
 //#region Letter Capitalize
 
-function letterCapitalize(str: string): string {
+ export function letterCapitalize(str: string): string {
         let regex: RegExp = /\b[a-zA-Z]/g;
         let arrStr: string[] = str.split(' ');
 
@@ -120,7 +120,7 @@ function letterCapitalize(str: string): string {
 
 //#region Simple Symbols 
 
-function simpleSymbols(str: string): boolean {
+ export function simpleSymbols(str: string): boolean {
 
         let regex: RegExp = /([\+]+[a-zA-Z]+[\+]+|[\=]+[a-zA-Z]+[\=]+)+/g;
         let regex2: RegExp = /[\+]+[a-zA-Z]+[\=]+/g;
@@ -146,7 +146,7 @@ function simpleSymbols(str: string): boolean {
 
 //#region Time Convert
 
-function TimeConvert(num: number): string {
+ export function TimeConvert(num: number): string {
         if (num / 60 > 1) {
                 return `${Math.trunc(num / 60)}:${num % 60}`;
         } else if (num / 60 === 1) {
@@ -162,7 +162,7 @@ function TimeConvert(num: number): string {
 //#region Sort Letters
 
 
-function SortLetters(str: string): string {
+ export function SortLetters(str: string): string {
         let arr = str.split('');
         arr.sort();
         return arr.join('');
@@ -173,7 +173,7 @@ function SortLetters(str: string): string {
 
 //#region Kaprekars Constant
 
-function KaprekarsConstant(num: number): number {
+ export function KaprekarsConstant(num: number): number {
 
         let counter: number = 0;
         while (num !== 6174) {
@@ -195,7 +195,7 @@ function KaprekarsConstant(num: number): number {
 
 //#region  Chess Travling 
 
-function ChessTraveling(str: string): number {
+ export function ChessTraveling(str: string): number {
 
         let values: string[] = str.split('').filter(number => (!(isNaN(Number(number))) && number !== ' '));
         let verticalDiff: number = parseInt(values[3]) - parseInt(values[1]);
@@ -210,7 +210,7 @@ function ChessTraveling(str: string): number {
 
 
 
-function swap<Type>(arr: Type[], index: number) {
+ export function swap<Type>(arr: Type[], index: number) {
         let a: Type, b: Type;
         if (index === arr.length - 1) {
                 return 0;
@@ -224,7 +224,7 @@ function swap<Type>(arr: Type[], index: number) {
 
 
 
-function randomPermu(arr: number[], times: number) {
+ export function randomPermu(arr: number[], times: number) {
         let permu: number[] = [];
         for (let value of arr) {
                 permu.push(value);
@@ -246,21 +246,21 @@ function randomPermu(arr: number[], times: number) {
 
 
 
-function alternative(num: number): number {
+ export function alternative(num: number): number {
         if (num === 0) {
                 return 0;
         }
         return 1 + (alternative(num - 1) - 1);
 }
 
-function PentagonalNumber(num: number): number {
+ export function PentagonalNumber(num: number): number {
         return num === 1 ? 1 : PentagonalNumber(num - 1) + (5 * (num - 1));
 }
 
 
 let str = 'acc?7??sss?3rr1??????5';
 
-function QuestionsMarks(str: string): boolean {
+ export function QuestionsMarks(str: string): boolean {
         let numIndices: number[] = [];
         let strSlices: string[] = [];
         let count: number = 0;
@@ -304,7 +304,7 @@ function QuestionsMarks(str: string): boolean {
 
 let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 
-function intersection(str: string[]): number[] | boolean {
+ export function intersection(str: string[]): number[] | boolean {
         let strF: string[][] = [];
         for (let i in str) {
                 strF[i] = str[i].split(', ');
@@ -337,7 +337,7 @@ function intersection(str: string[]): number[] | boolean {
 
 //#region   bracket combinations
 
-function bracketCombinations(num: number): number {
+ export function bracketCombinations(num: number): number {
         let result: number = 0;
         if (typeof num === 'number') {
 
@@ -361,7 +361,7 @@ function bracketCombinations(num: number): number {
 
 
 
-function MinWindowSubstring(strArr: string[]): string |  boolean {
+ export function MinWindowSubstring(strArr: string[]): string |  boolean {
         let str: string = strArr[0];
         let needle: string[] = strArr[1].split('');
 
@@ -379,7 +379,7 @@ function MinWindowSubstring(strArr: string[]): string |  boolean {
 
         // ---------------------- helpers -----------------------------
         //isContained checks to see if all the chars in the needle are in the given string
-        function isContained(str: string): boolean {
+          function isContained(str: string): boolean {
                 let arr: string[] = str.split('');
                 for (let i = 0, len = needle.length; i < len; i++) {
                         let place = arr.findIndex(val => {
@@ -405,7 +405,7 @@ function MinWindowSubstring(strArr: string[]): string |  boolean {
 
 //#region  treeConstructor 
 
-function TreeConstructor(strArr: string[]): boolean {
+ export function TreeConstructor(strArr: string[]): boolean {
         let formatedArr: number[] = [];
         let maxParentCount: number = 0;
         for (let value of strArr) {
@@ -446,7 +446,7 @@ function TreeConstructor(strArr: string[]): boolean {
 
 
 
-function bracketMatcher(str: string): number {
+ export function bracketMatcher(str: string): number {
         let open = 0;
         for (let i = 0; i < str.length; i++) {
                 if (str[i] === '(') open++;
@@ -470,7 +470,7 @@ function bracketMatcher(str: string): number {
 
 //#region codelandUsernamevalidation
 
-function CodelandUsernameValidation(str: string): boolean {
+ export function CodelandUsernameValidation(str: string): boolean {
         let letters_numbers_underscores: RegExp = /^[A-Za-z0-9_]+$/g;
         let letters: RegExp = /[A-Za-z]/g;
         // analays this type
@@ -497,7 +497,7 @@ function CodelandUsernameValidation(str: string): boolean {
 
 
 
-function addTwoNumbers(l1, l2) {
+ export function addTwoNumbers(l1, l2) {
         // rework this type
         let arr1: any = [];
         let arr2: any = [];
@@ -550,7 +550,7 @@ function addTwoNumbers(l1, l2) {
 
 //#region  maxSlidingwindow
 
-function maxSlidingwindow(nums: number[], k: number): number[] {
+ export function maxSlidingwindow(nums: number[], k: number): number[] {
         let maxArr: number[] = [];
         for (let index in nums) {
 
@@ -575,7 +575,7 @@ function maxSlidingwindow(nums: number[], k: number): number[] {
 
 //#region  two sum 
 
-function twoSum(nums: number[], target: number): number[] | undefined {
+ export function twoSum(nums: number[], target: number): number[] | undefined {
         for (let i = 0; i < nums.length; i++) {
                 for (let j = i + 1; j < nums.length; j++) {
                         if (nums[i] + nums[j] === target) {
@@ -597,7 +597,7 @@ function twoSum(nums: number[], target: number): number[] | undefined {
 
 //#region lengthOfLongestSubstring 
 
-function lengthOfLongestSubstring(s: string) {
+ export function lengthOfLongestSubstring(s: string) {
         let ans: number = 0;
         let map = {};
         let i: number = 0;
@@ -628,7 +628,7 @@ function lengthOfLongestSubstring(s: string) {
 
 //#region  reverse integer 
 
-function reverseInt(x: number): number {
+ export function reverseInt(x: number): number {
         let number: number = (x < 0) ? -1 * x : x;
         let lastDigit: number = 0;
         let reverse: number = 0;
@@ -659,7 +659,7 @@ console.log(reverseInt(-123))
 
 //#region zigzag
 
-function zigzag(s: string, numRows: number): string {
+ export function zigzag(s: string, numRows: number): string {
         if (numRows == 1) return s;
         const length = Math.min(numRows, s.length)
         let rows: string[] = [];
@@ -694,7 +694,7 @@ console.log(zigzag("PAYPALISHIRING", 3))
 
 //#region  myatoi 
 
-function myAtoi(s: string): number {
+ export function myAtoi(s: string): number {
         let int32signed: number = Math.pow(2, 31) * -1;
         let int32unsigned: number = Math.pow(2, 31) - 1
         let num: number = parseInt(s)
@@ -728,7 +728,7 @@ function myAtoi(s: string): number {
 
 //#region  maxArea 
 
-function maxArea(height: number[]): number {
+ export function maxArea(height: number[]): number {
         let maxarea: number = 0
         let left: number = 0
         let right: number = height.length - 1
@@ -750,7 +750,7 @@ console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
 
 //#region valid brackeets 
 
-let isValid = function (s: string): boolean {
+let isValid =   function (s: string): boolean {
         if (s.length % 2 !== 0 || '})]'.includes(s[0]) || '({['.includes(s[s.length - 1])) return false
         let map = {
                 ")": "(",
@@ -787,9 +787,9 @@ console.log(isValid("(){}}{"))
 
 //#region median of two sorted arrays
 
-function fmsa(nums1: number[], nums2: number[]): number {
+ export function fmsa(nums1: number[], nums2: number[]): number {
 
-        function sortNumber(a: number, b: number): number {
+          function sortNumber(a: number, b: number): number {
                 return a - b;
         }
         let arr: number[] = nums1.concat(nums2).sort(sortNumber);
