@@ -209,7 +209,7 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 
 
 
-
+// todo: util function
  export function swap<Type>(arr: Type[], index: number) {
         let a: Type, b: Type;
         if (index === arr.length - 1) {
@@ -224,7 +224,7 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 
 
 
- export function randomPermu(arr: number[], times: number) {
+ export function randomPermu(arr: number[], times: number): number[] {
         let permu: number[] = [];
         for (let value of arr) {
                 permu.push(value);
@@ -238,11 +238,6 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 
 
 
-// let arr = [2,3,4,5]
-
-
-
-// console.log(randomPermu(arr, 15));
 
 
 
@@ -253,12 +248,13 @@ import { ListNode, insert, arrayToList } from "./linkedList";
         return 1 + (alternative(num - 1) - 1);
 }
 
+
+
  export function PentagonalNumber(num: number): number {
         return num === 1 ? 1 : PentagonalNumber(num - 1) + (5 * (num - 1));
 }
 
 
-let str = 'acc?7??sss?3rr1??????5';
 
  export function QuestionsMarks(str: string): boolean {
         let numIndices: number[] = [];
@@ -302,7 +298,6 @@ let str = 'acc?7??sss?3rr1??????5';
 
 
 
-let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 
  export function intersection(str: string[]): number[] | boolean {
         let strF: string[][] = [];
@@ -331,7 +326,6 @@ let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 }
 
 
-// console.log(intersection(findinter));
 
 
 
@@ -351,7 +345,6 @@ let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 }
 
 
-// console.log(bracketCombinations(9))
 //#endregion
 
 
@@ -397,8 +390,7 @@ let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 
 
 
-//       console.log(MinWindowSubstring(["ahffaksfajeeubsne", "jefaa"]))
-//       console.log(MinWindowSubstring(["aaffhkksemckelloe", "fhea"]))
+
 //#endregion
 
 
@@ -431,11 +423,7 @@ let findinter = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
 
 
 
-// console.log(TreeConstructor(["(1,2)", "(2,4)", "(5,7)", "(7,2)", "(9,5)"]))
-// console.log(TreeConstructor(["(1,2)", "(3,2)", "(2,12)", "(5,2)"]))
-// console.log(TreeConstructor(["(2,5)", "(2,6)"])) // false 
-// console.log(TreeConstructor(["(2,3)", "(1,2)", "(4,9)", "(9,3)", "(12,9)", "(6,4)", "(1,9)"])) // false 
-// console.log(TreeConstructor(["(10,20)", "(20,50)"])) // true 
+
 
 
 //#endregion
