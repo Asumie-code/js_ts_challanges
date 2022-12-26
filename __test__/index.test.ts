@@ -16,8 +16,16 @@ import {
     intersection,
     bracketCombinations,
     MinWindowSubstring,
-    TreeConstructor
+    TreeConstructor,
+    bracketMatcher,
+    CodelandUsernameValidation,
+    addTwoNumbers,
+    maxSlidingwindow,
+    twoSum,
+    reverseInt,
+    zigzag
 } from '../index'
+import { LinkedList } from '../linkedList'
 
 
 
@@ -226,19 +234,114 @@ test('TreeConstructor cases', () => {
 
 
 
-test('TreeConstructor cases', () => {
+test('bracketMatcher cases', () => {
 
-    let cases: string[][] = [
-        ["(1,2)", "(2,4)", "(5,7)", "(7,2)", "(9,5)"],
-        ["(1,2)", "(3,2)", "(2,12)", "(5,2)"],
-        ["(2,5)", "(2,6)"]
-    ] 
-    let expected: boolean  [] = [true, false, true]   
-    
+    let cases: string[] = ["(coder)(byte))","(c(oder)) b(yte)","(coder( b(yte)"] 
+    let expected: number[] = [0,1,0]   
+     
     for(let index in cases) {
-        expect(TreeConstructor(cases[index])).toEqual(expected[index])   
+        expect(bracketMatcher(cases[index])).toEqual(expected[index])   
     }  
 })
+
+
+
+test('CodelandUsernameValidation cases', () => {
+
+    let cases: string[] = ["aa_", "u__hello_world123"] 
+    let expected: boolean[] = [false, true]   
+    
+    for(let index in cases) {
+        expect(CodelandUsernameValidation(cases[index])).toEqual(expected[index])   
+    }  
+})
+
+
+
+test('addTwoNumbers cases', () => {
+
+    let cases: LinkedList<number>[][] = [
+        [new LinkedList<number>(...[2,4,3]), new LinkedList<number>(...[5 ,6, 4])],
+        [new LinkedList<number>(...[2, 4, 9]), new LinkedList<number>(...[5,6,4,9])],
+        [new LinkedList<number>(...[9, 9, 9, 9, 9, 9, 9]), new LinkedList<number>(...[9, 9, 9, 9])],
+    ]
+ 
+    let expected: number[][] = [
+        [4, 8, 6],
+        [4,8,8,1],
+        [8, 9, 9, 9, 9, 9, 9, 1]
+    ]
+
+    for(let index in cases) {
+        expect(addTwoNumbers(cases[index][0], cases[index][0])).toBeDefined() 
+        expect(addTwoNumbers(cases[index][0], cases[index][0]).toArray()).toEqual(expected[index]) 
+         
+    }  
+
+})
+
+
+
+
+test('maxSlidingwindow cases', () => {
+
+    let cases: number[][] = [[1,3,-1,-3,5,3,6,7]] 
+    let expected: number[][] = [[3, 3, 5, 5, 6, 7]]   
+    
+    for(let index in cases) {
+        expect(maxSlidingwindow(cases[index], 3)).toEqual(expected[index])   
+    }  
+})
+
+
+
+
+test('twoSum cases', () => {
+
+    let cases: (number[] | number)[][] = [
+        [[2,7,11,15], 9],
+        [[2,5,5,11], 10]
+    ] 
+    let expected: number[][] = [
+        [0,1],
+        [1, 2]
+    ]   
+    
+    for(let index in cases) {
+        expect(twoSum(cases[index][0] as number[], cases[index][1] as number)).toEqual(expected[index])   
+    }  
+})
+
+
+
+
+test('reverseInt cases', () => {
+
+    let cases: number[] = [32, 312, -123]
+    let expected: number[] = [23, 213, -321]   
+    
+    for(let index in cases) {
+        expect(reverseInt(cases[index])).toEqual(expected[index])   
+    }  
+})
+
+
+
+test('zigzag cases', () => {
+
+    let cases: (string | number)[][] = [
+        ["PAYPALISHIRING", 3]
+    ]
+    let expected: string[] = ["PAHNAPLSIIGYIR"]   
+    
+    for(let index in cases) {
+        expect(zigzag(cases[index][0] as string, cases[index][1] as number)).toEqual(expected[index])   
+    }  
+})
+
+
+
+
 
 
 

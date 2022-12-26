@@ -1,5 +1,5 @@
 import { random, factorial } from "./utils";
-import { ListNode, insert, arrayToList } from "./linkedList";
+import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
@@ -447,10 +447,7 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 
 
 
-// console.log(BracketMatcher("(coder)(byte))"))
-// console.log(BracketMatcher("(c(oder)) b(yte)"))
-// console.log(BracketMatcher("(coder( b(yte)"))
-// console.log(BracketMatcher("the color re(d))()(()"))
+
 
 //#endregion
 
@@ -475,8 +472,7 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 
 
 
-//       console.log(CodelandUsernameValidation("aa_"))
-//       console.log(CodelandUsernameValidation("u__hello_world123"))
+
 //#endregion
 
 
@@ -484,23 +480,12 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 //#region addtwonumbers  linkedlists
 
 
-
- export function addTwoNumbers(l1, l2) {
-        // rework this type
-        let arr1: any = [];
-        let arr2: any = [];
-        let head1 = l1;
-        let head2 = l2;
-        while (head1 !== null) {
-                arr1.push(head1.val);
-                head1 = head1.next;
-        }
-
-        while (head2 !== null) {
-                arr2.push(head2.val);
-                head2 = head2.next;
-        }
-
+// enforce number type, don't allow linkedList with strings values
+ export function addTwoNumbers(l1: LinkedList<number>, l2: LinkedList<number>): LinkedList<number> {
+        
+        let arr1: number[] = l1.toArray();
+        let arr2: number[] = l2.toArray();
+        
         arr1 = arr1.reverse();
         arr2 = arr2.reverse();
 
@@ -514,19 +499,14 @@ import { ListNode, insert, arrayToList } from "./linkedList";
                 sum = BigInt(str1) + BigInt(str2);
         }
         const result = (sum.toString()).split('').reverse();
-        const listResult = arrayToList(result);
+        const listResult = new LinkedList<number>();
+        for(let value of result) {
+                listResult.append(parseInt(value))
+        }
 
         return listResult;
 
 }
-
-
-// console.log(addTwoNumbers(arrayToList([2, 4, 3]), arrayToList([5, 6, 4])))
-// console.log(addTwoNumbers(arrayToList([2, 4, 9]), arrayToList([5,6,4,9])))
-// console.log(addTwoNumbers(arrayToList([9, 9, 9, 9, 9, 9, 9]), arrayToList([9, 9, 9, 9])))
-// console.log(addTwoNumbers(arrayToList([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]), arrayToList([5,6,4])))
-
-
 
 
 
@@ -554,8 +534,6 @@ import { ListNode, insert, arrayToList } from "./linkedList";
 }
 
 
-
-// console.log(maxSlidingwindow([1,3,-1,-3,5,3,6,7], 3))
 
 //#endregion
 
@@ -674,7 +652,7 @@ console.log(reverseInt(-123))
 
 }
 
-console.log(zigzag("PAYPALISHIRING", 3))
+
 
 //#endregion
 
