@@ -7,7 +7,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region Long word
 
- export function longWord(str: string) {
+export function longWord(str: string) {
 
         let regex = /[^\w\s]/g;
         let words: string[] = str.split(regex).join('').split(' ');
@@ -30,7 +30,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 //#region  Revers String
 
 
- export function reverString(str: string) {
+export function reverString(str: string) {
         let revStr: string[] = [];
         let i = str.length - 1;
         for (let value of str) {
@@ -45,7 +45,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  Change Letters
 
- export function letterChange(str: string): string {
+export function letterChange(str: string): string {
 
         let regex: RegExp = /[a-zA-Z]+/g;
         let shiftStr: string[] = [];
@@ -78,7 +78,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  Simple Adding
 
- export function SimpleAdding(num: number): number {
+export function SimpleAdding(num: number): number {
 
 
         if (num === 1) {
@@ -102,7 +102,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region Letter Capitalize
 
- export function letterCapitalize(str: string): string {
+export function letterCapitalize(str: string): string {
         let regex: RegExp = /\b[a-zA-Z]/g;
         let arrStr: string[] = str.split(' ');
 
@@ -120,7 +120,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region Simple Symbols 
 
- export function simpleSymbols(str: string): boolean {
+export function simpleSymbols(str: string): boolean {
 
         let regex: RegExp = /([\+]+[a-zA-Z]+[\+]+|[\=]+[a-zA-Z]+[\=]+)+/g;
         let regex2: RegExp = /[\+]+[a-zA-Z]+[\=]+/g;
@@ -146,7 +146,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region Time Convert
 
- export function TimeConvert(num: number): string {
+export function TimeConvert(num: number): string {
         if (num / 60 > 1) {
                 return `${Math.trunc(num / 60)}:${num % 60}`;
         } else if (num / 60 === 1) {
@@ -162,7 +162,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 //#region Sort Letters
 
 
- export function SortLetters(str: string): string {
+export function SortLetters(str: string): string {
         let arr = str.split('');
         arr.sort();
         return arr.join('');
@@ -173,7 +173,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region Kaprekars Constant
 
- export function KaprekarsConstant(num: number): number {
+export function KaprekarsConstant(num: number): number {
 
         let counter: number = 0;
         while (num !== 6174) {
@@ -195,7 +195,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  Chess Travling 
 
- export function ChessTraveling(str: string): number {
+export function ChessTraveling(str: string): number {
 
         let values: string[] = str.split('').filter(number => (!(isNaN(Number(number))) && number !== ' '));
         let verticalDiff: number = parseInt(values[3]) - parseInt(values[1]);
@@ -210,7 +210,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 // todo: util function
- export function swap<Type>(arr: Type[], index: number) {
+export function swap<Type>(arr: Type[], index: number) {
         let a: Type, b: Type;
         if (index === arr.length - 1) {
                 return 0;
@@ -224,7 +224,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
- export function randomPermu(arr: number[], times: number): number[] {
+export function randomPermu(arr: number[], times: number): number[] {
         let permu: number[] = [];
         for (let value of arr) {
                 permu.push(value);
@@ -241,7 +241,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
- export function alternative(num: number): number {
+export function alternative(num: number): number {
         if (num === 0) {
                 return 0;
         }
@@ -250,13 +250,13 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
- export function PentagonalNumber(num: number): number {
+export function PentagonalNumber(num: number): number {
         return num === 1 ? 1 : PentagonalNumber(num - 1) + (5 * (num - 1));
 }
 
 
 
- export function QuestionsMarks(str: string): boolean {
+export function QuestionsMarks(str: string): boolean {
         let numIndices: number[] = [];
         let strSlices: string[] = [];
         let count: number = 0;
@@ -299,7 +299,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
- export function intersection(str: string[]): number[] | boolean {
+export function intersection(str: string[]): number[] | boolean {
         let strF: string[][] = [];
         for (let i in str) {
                 strF[i] = str[i].split(', ');
@@ -331,7 +331,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region   bracket combinations
 
- export function bracketCombinations(num: number): number {
+export function bracketCombinations(num: number): number {
         let result: number = 0;
         if (typeof num === 'number') {
 
@@ -354,7 +354,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
- export function MinWindowSubstring(strArr: string[]): string |  boolean {
+export function MinWindowSubstring(strArr: string[]): string | boolean {
         let str: string = strArr[0];
         let needle: string[] = strArr[1].split('');
 
@@ -372,7 +372,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
         // ---------------------- helpers -----------------------------
         //isContained checks to see if all the chars in the needle are in the given string
-          function isContained(str: string): boolean {
+        function isContained(str: string): boolean {
                 let arr: string[] = str.split('');
                 for (let i = 0, len = needle.length; i < len; i++) {
                         let place = arr.findIndex(val => {
@@ -397,14 +397,14 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  treeConstructor 
 
- export function TreeConstructor(strArr: string[]): boolean {
+export function TreeConstructor(strArr: string[]): boolean {
         let formatedArr: number[] = [];
         let maxParentCount: number = 0;
         for (let value of strArr) {
                 formatedArr.push(parseInt(value[3]));
         }
 
-        const parentCount: {[key: number]: number } = {};
+        const parentCount: { [key: number]: number } = {};
         formatedArr.forEach((x) => {
                 parentCount[x] = (parentCount[x] || 0) + 1;
         })
@@ -434,7 +434,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 
- export function bracketMatcher(str: string): number {
+export function bracketMatcher(str: string): number {
         let open = 0;
         for (let i = 0; i < str.length; i++) {
                 if (str[i] === '(') open++;
@@ -455,7 +455,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region codelandUsernamevalidation
 
- export function CodelandUsernameValidation(str: string): boolean {
+export function CodelandUsernameValidation(str: string): boolean {
         let letters_numbers_underscores: RegExp = /^[A-Za-z0-9_]+$/g;
         let letters: RegExp = /[A-Za-z]/g;
         // analays this type
@@ -481,11 +481,11 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 
 // enforce number type, don't allow linkedList with strings values
- export function addTwoNumbers(l1: LinkedList<number>, l2: LinkedList<number>): LinkedList<number> {
-        
+export function addTwoNumbers(l1: LinkedList<number>, l2: LinkedList<number>): LinkedList<number> {
+
         let arr1: number[] = l1.toArray();
         let arr2: number[] = l2.toArray();
-        
+
         arr1 = arr1.reverse();
         arr2 = arr2.reverse();
 
@@ -500,7 +500,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
         }
         const result = (sum.toString()).split('').reverse();
         const listResult = new LinkedList<number>();
-        for(let value of result) {
+        for (let value of result) {
                 listResult.append(parseInt(value))
         }
 
@@ -518,7 +518,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  maxSlidingwindow
 
- export function maxSlidingwindow(nums: number[], k: number): number[] {
+export function maxSlidingwindow(nums: number[], k: number): number[] {
         let maxArr: number[] = [];
         for (let index in nums) {
 
@@ -541,7 +541,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  two sum 
 
- export function twoSum(nums: number[], target: number): number[] | undefined {
+export function twoSum(nums: number[], target: number): number[] | undefined {
         for (let i = 0; i < nums.length; i++) {
                 for (let j = i + 1; j < nums.length; j++) {
                         if (nums[i] + nums[j] === target) {
@@ -563,7 +563,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region lengthOfLongestSubstring 
 
- export function lengthOfLongestSubstring(s: string) {
+export function lengthOfLongestSubstring(s: string) {
         let ans: number = 0;
         let map = {};
         let i: number = 0;
@@ -594,7 +594,7 @@ import { ListNode, insert, arrayToList, LinkedList } from "./linkedList";
 
 //#region  reverse integer 
 
- export function reverseInt(x: number): number {
+export function reverseInt(x: number): number {
         let number: number = (x < 0) ? -1 * x : x;
         let lastDigit: number = 0;
         let reverse: number = 0;
@@ -625,7 +625,7 @@ console.log(reverseInt(-123))
 
 //#region zigzag
 
- export function zigzag(s: string, numRows: number): string {
+export function zigzag(s: string, numRows: number): string {
         if (numRows == 1) return s;
         const length = Math.min(numRows, s.length)
         let rows: string[] = [];
@@ -660,7 +660,7 @@ console.log(reverseInt(-123))
 
 //#region  myatoi 
 
- export function myAtoi(s: string): number {
+export function myAtoi(s: string): number {
         let int32signed: number = Math.pow(2, 31) * -1;
         let int32unsigned: number = Math.pow(2, 31) - 1
         let num: number = parseInt(s)
@@ -680,13 +680,7 @@ console.log(reverseInt(-123))
 
 }
 
-// console.log(myAtoi(' 32432fdsaf432'))
-// console.log(myAtoi("4193 with words"))
-// console.log(myAtoi( "   -42"))
-// console.log(myAtoi( "words and 987"))
-// console.log(parseInt('-2342352'))
-// console.log(Math.pow(2, 31) * -1)
-// console.log( Math.pow(2, 31) - 1)
+
 
 //#endregion
 
@@ -694,7 +688,7 @@ console.log(reverseInt(-123))
 
 //#region  maxArea 
 
- export function maxArea(height: number[]): number {
+export function maxArea(height: number[]): number {
         let maxarea: number = 0
         let left: number = 0
         let right: number = height.length - 1
@@ -709,14 +703,13 @@ console.log(reverseInt(-123))
         return maxarea
 }
 
-console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
 
 //#endregion
 
 
 //#region valid brackeets 
 
-let isValid =   function (s: string): boolean {
+export function isValid(s: string): boolean {
         if (s.length % 2 !== 0 || '})]'.includes(s[0]) || '({['.includes(s[s.length - 1])) return false
         let map = {
                 ")": "(",
@@ -741,11 +734,6 @@ let isValid =   function (s: string): boolean {
 };
 
 
-console.log(isValid("){"))
-console.log(isValid("{}"))
-console.log(isValid("(){}}{"))
-
-
 
 //#endregion
 
@@ -753,9 +741,9 @@ console.log(isValid("(){}}{"))
 
 //#region median of two sorted arrays
 
- export function fmsa(nums1: number[], nums2: number[]): number {
+export function fmsa(nums1: number[], nums2: number[]): number {
 
-          function sortNumber(a: number, b: number): number {
+        function sortNumber(a: number, b: number): number {
                 return a - b;
         }
         let arr: number[] = nums1.concat(nums2).sort(sortNumber);
@@ -769,9 +757,7 @@ console.log(isValid("(){}}{"))
         return median
 }
 
-console.log(fmsa([1, 3], [2]))
-console.log(fmsa([1, 2], [3, 4]))
-console.log(fmsa([-2, -1], [3]))
+
 
 
 //#endregion
